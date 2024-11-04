@@ -1,0 +1,7 @@
+{
+  "name": "lct-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
