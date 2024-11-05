@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar , IonSelect,IonLabel,IonItem,IonCard,IonIcon,IonSelectOption} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar , IonSelect,IonLabel,IonItem,IonCard,IonIcon,IonSelectOption, IonSpinner } from '@ionic/angular/standalone';
 import { CalculationType } from 'src/app/shared/models/calc-type.model';
 
 @Component({
@@ -9,7 +9,7 @@ import { CalculationType } from 'src/app/shared/models/calc-type.model';
   templateUrl: './select-calculation-type.page.html',
   styleUrls: ['./select-calculation-type.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonSpinner, 
     IonLabel,
     IonItem,
     IonCard,
@@ -25,14 +25,17 @@ import { CalculationType } from 'src/app/shared/models/calc-type.model';
     FormsModule,
   ],
 })
-export class SelectCalculationTypePage  implements OnInit {
+export class SelectCalculationTypePage implements OnInit {
   @Output() typeSelected = new EventEmitter<string>();
+  isLoading: boolean = false;
 
   calculationTypes: CalculationType[] = [
     { id: 'fundacao', displayName: 'Fundação' },
     { id: 'estrutura', displayName: 'Estrutura' },
     // Outros tipos podem ser adicionados conforme necessário
   ];
+
+  selectedType: string = '';
 
   constructor() {}
 

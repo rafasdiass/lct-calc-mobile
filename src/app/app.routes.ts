@@ -1,16 +1,21 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './home/home.page';
 
 export const routes: Routes = [
   {
     path: '',
-  
+    redirectTo: 'select-calculation-type', // Define a rota padrão inicial para a página select-calculation-type
+    pathMatch: 'full',
+  },
+  {
+    path: 'select-calculation-type', // Página inicial do conteúdo
+    loadComponent: () =>
+      import(
+        './content/select-calculation-type/select-calculation-type.page'
+      ).then((m) => m.SelectCalculationTypePage),
+  },
+  {
+    path: '',
     children: [
-      {
-        path: '',
-        redirectTo: 'select-calculation-type', // Define uma rota padrão inicial
-        pathMatch: 'full',
-      },
       {
         path: 'header',
         loadComponent: () =>
@@ -69,13 +74,6 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'select-calculation-type',
-        loadComponent: () =>
-          import(
-            './content/select-calculation-type/select-calculation-type.page'
-          ).then((m) => m.SelectCalculationTypePage),
-      },
-      {
         path: 'loading-indicator',
         loadComponent: () =>
           import('./content/loading-indicator/loading-indicator.page').then(
@@ -94,10 +92,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./content/history/history.page').then((m) => m.HistoryPage),
       },
+      {
+        path: 'select-sub-type',
+        loadComponent: () =>
+          import('./content/select-sub-type/select-sub-type.page').then(
+            (m) => m.SelectSubTypePage
+          ),
+      },
     ],
-  },
-  {
-    path: 'select-sub-type',
-    loadComponent: () => import('./content/select-sub-type/select-sub-type.page').then( m => m.SelectSubTypePage)
   },
 ];

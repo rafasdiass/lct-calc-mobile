@@ -1,19 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="header">
-    <ion-title class="header-title">
-      <app-header></app-header> <!-- Chamando o header como componente -->
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="home-container">
+  <div class="header-wrapper">
+    <app-header></app-header> <!-- Header fixo na parte superior -->
+  </div>
 
-<ion-content class="content-container">
-  <div class="content-wrapper d-flex flex-grow-1 position-relative">
-    <!-- Conteúdo principal das rotas -->
-    <ion-router-outlet></ion-router-outlet>
+  <div class="content-wrapper">
+    <router-outlet></router-outlet> <!-- Aqui será onde as páginas serão carregadas -->
+  </div>
+
+  <div class="footer-wrapper">
+    <app-footer></app-footer> <!-- Footer fixo na parte inferior -->
   </div>
 </ion-content>
-
-<!-- Footer sempre presente -->
-<ion-footer  class="footer">
-  <app-footer></app-footer>
-</ion-footer>

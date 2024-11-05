@@ -1,27 +1,39 @@
-#container {
-  text-align: center;
+.home-container {
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffffff;
+}
 
-  position: absolute;
+.header-wrapper {
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 60px;
+  /* altura do header */
+ 
+  z-index: 1;
+  /* para garantir que o header fique sobre o conteúdo */
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.content-wrapper {
+  margin-top: 60px;
+  /* Use a altura exata do header */
+  margin-bottom: 60px;
+  /* Use a altura exata do footer */
+  height: calc(100vh - 120px);
+  /* Altura total menos o header e o footer */
+  overflow-y: auto;
+  background-color: #ffffff;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  /* altura do footer */
+  background-color: #f8f8f8;
+  z-index: 1;
 }
