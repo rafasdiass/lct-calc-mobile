@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>footer</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-footer>
+  <ion-tab-bar slot="bottom" class="custom-tab-bar">
+    <ion-tab-button tab="home" (click)="navigateTo('/home')" [class.selected]="selectedTab === 'home'">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">footer</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+    <ion-tab-button tab="calculos" (click)="navigateTo('/calculos')" [class.selected]="selectedTab === 'calculos'">
+      <ion-icon name="calculator-outline"></ion-icon>
+      <ion-label>Cálculos</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="historico" (click)="navigateTo('/historico')" [class.selected]="selectedTab === 'historico'">
+      <ion-icon name="time-outline"></ion-icon>
+      <ion-label>Histórico</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="sobre" (click)="navigateTo('/sobre')" [class.selected]="selectedTab === 'sobre'">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      <ion-label>Sobre</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>
