@@ -96,4 +96,8 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'select-sub-type',
+    loadComponent: () => import('./content/select-sub-type/select-sub-type.page').then( m => m.SelectSubTypePage)
+  },
 ];

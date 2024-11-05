@@ -1,13 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>select-calculation-type</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">select-calculation-type</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="select-calculation-type-content">
+  <ion-card class="select-calculation-type-card">
+    <ion-item>
+      <ion-label>
+        Selecione o tipo de cálculo:
+      </ion-label>
+      <!-- Usando ion-select para dropdown, ideal para Ionic e dispositivos móveis -->
+      <ion-select placeholder="Escolha um tipo..." (ionChange)="onSelectType($event)">
+        <ion-select-option *ngFor="let type of calculationTypes" [value]="type.id">
+          {{ type.displayName }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
 </ion-content>

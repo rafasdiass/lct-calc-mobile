@@ -1,0 +1,101 @@
+// Paleta de cores
+$primary-bg: #2c2c2c;
+$primary-text: #e0d5c2;
+$accent-color: #d4a373;
+$hover-bg: #d4a373;
+$hover-text: #2c2c2c;
+$gold: #ffd700;
+$light-shadow: rgba(212, 163, 115, 0.4);
+
+.input-form-content {
+    padding: 1rem;
+    background-color: $primary-bg;
+    color: $primary-text;
+}
+
+// Estilo do Header
+ion-toolbar {
+    --background: $primary-bg;
+    --color: $primary-text;
+    border-bottom: 2px solid $gold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    ion-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $primary-text;
+        text-shadow: 0 1px 2px $light-shadow;
+    }
+}
+
+// Estilo dos Itens de Entrada
+.input-item {
+    margin-bottom: 1rem;
+    background-color: lighten($primary-bg, 3%);
+    border-radius: 5px;
+    padding: 0.8rem;
+    transition: background-color 0.3s;
+
+    ion-label {
+        color: $primary-text;
+    }
+
+    ion-select,
+    ion-input {
+        --background: $primary-bg;
+        --color: $primary-text;
+        border-radius: 5px;
+    }
+
+    ion-icon {
+        color: $accent-color;
+        font-size: 1.2rem;
+    }
+}
+
+// Estilo do Indicador de Carregamento
+.loading-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+
+    ion-spinner {
+        --color: $accent-color;
+    }
+}
+
+// Estilo do Botão
+ion-footer {
+    padding: 0.5rem;
+    background-color: $primary-bg;
+    border-top: 2px solid $gold;
+
+    ion-button {
+        width: 100%;
+        font-size: 1rem;
+        font-weight: bold;
+        --background: $accent-color;
+        --color: $primary-bg;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            background-color: lighten($accent-color, 10%);
+            color: $hover-text;
+        }
+    }
+}
+
+// Estilo de Feedback e Notificação de Erro
+app-feedback,
+app-error-notification {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    color: $primary-text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: darken($primary-bg, 5%);
+    border-left: 4px solid $gold;
+}

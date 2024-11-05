@@ -1,0 +1,23 @@
+<ion-content class="select-sub-type-content">
+  <ion-card *ngIf="subTypes.length > 0" class="select-sub-type-card">
+    <ion-item>
+      <ion-label>
+        <ion-icon name="list-outline" slot="start"></ion-icon>
+        Selecione o subtipo:
+      </ion-label>
+      <!-- Usando um ion-select para o dropdown de subtipo -->
+      <ion-select interface="popover" placeholder="Escolha um subtipo..." (ionChange)="onSubTypeSelect($event)">
+        <ion-select-option *ngFor="let subType of subTypes" [value]="subType">
+          {{ subType }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="subTypes.length === 0" color="light" class="alert-card">
+    <ion-item lines="none">
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      <ion-label>Nenhum subtipo disponível para o tipo selecionado.</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>

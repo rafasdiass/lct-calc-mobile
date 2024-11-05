@@ -1,13 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>input-form</ion-title>
+    <ion-title>
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+      Formulário de Entrada
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">input-form</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="input-form-content">
+  <!-- Seletor de tipo de cálculo -->
+  <ion-item class="input-item">
+    <ion-label>
+      <ion-icon name="list-outline"></ion-icon>
+      Selecione o tipo de cálculo:
+    </ion-label>
+    <app-select-calculation-type (typeSelected)="onTypeSelected($event)"></app-select-calculation-type>
+  </ion-item>
+
+  <!-- Seletor de subtipo -->
+  <ion-item class="input-item" *ngIf="selectedType">
+    <app-select-sub-type [selectedCategory]="selectedType" (subTypeSelected)="onSubTypeSelected($event)">
+    </app-select-sub-type>
+  </ion-item>
+
+  <!-- Campos de entrada -->
+  <ion-card *ngIf="selectedType" class="input-card">
+    <app-input-fields [selectedType]="selectedType" [selectedSubType]="selectedSubType"
+      (fieldValuesChanged)="onFieldValuesChanged($event)">
+    </app-input-fields>
+  </ion-card>
+
+  <!-- Indicador de carregamento -->
+  <div class="loading-container" *ngIf="isLoading">
+    <app-loading-indicator></app-loading-indicator>
+  </div>
+
+  <!-- Botão de envio -->
+  <ion-footer>
+    <ion-button expand="full" color="primary" (click)="startLoading()" [disabled]="isLoading">
+      <ion-icon name="send-outline" slot="start"></ion-icon>
+      Enviar
+    </ion-button>
+  </ion-footer>
+
+  <!-- Componente de feedback -->
+  <app-feedback *ngIf="feedback" [message]="feedback.message" [type]="feedback.type"></app-feedback>
+
+  <!-- Componente de notificação de erro -->
+  <app-error-notification *ngIf="errorMessage" [errorMessage]="errorMessage"></app-error-notification>
 </ion-content>

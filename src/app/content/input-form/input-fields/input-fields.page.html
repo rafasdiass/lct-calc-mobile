@@ -1,13 +1,56 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>input-fields</ion-title>
+    <ion-title>
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+      Formulário de Entrada
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">input-fields</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="input-form-content">
+  <!-- Itera sobre os campos disponíveis -->
+  <div *ngFor="let field of fields">
+    <!-- Seletor de Tipo de Solo -->
+    <ion-item class="input-item" *ngIf="field === 'Tipo de Solo' && solosDisponiveis">
+      <ion-label position="stacked">Selecione o Tipo de Solo</ion-label>
+      <ion-select placeholder="Selecione o Tipo de Solo" (ionChange)="onSelectChange(field, $event)">
+        <ion-select-option *ngFor="let solo of solosDisponiveis" [value]="solo.codigo">
+          {{ solo.nome }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Seletor de Material -->
+    <ion-item class="input-item" *ngIf="field === 'Material' && materiaisDisponiveis">
+      <ion-label position="stacked">Selecione o Material</ion-label>
+      <ion-select placeholder="Selecione o Material" (ionChange)="onSelectChange(field, $event)">
+        <ion-select-option *ngFor="let material of materiaisDisponiveis" [value]="material.codigo">
+          {{ material.nome }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Campo de Entrada de Texto para Outros Campos -->
+    <ion-item *ngIf="!dropdownFields.includes(field)" class="input-item">
+      <ion-label position="stacked">{{ field }}</ion-label>
+      <ion-input [placeholder]="field" (ionInput)="onFieldChange(field, $event)" required></ion-input>
+    </ion-item>
+  </div>
+
+  <!-- Indicador de Carregamento -->
+  <div class="loading-container" *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <!-- Botão de Envio -->
+  <ion-footer>
+    <ion-button expand="full" color="primary" (click)="startLoading()" [disabled]="isLoading">
+      <ion-icon name="send-outline" slot="start"></ion-icon>
+      Enviar
+    </ion-button>
+  </ion-footer>
+
+  <!-- Componentes de Feedback e Erro -->
+  <app-feedback *ngIf="feedback" [message]="feedback.message" [type]="feedback.type"></app-feedback>
+  <app-error-notification *ngIf="errorMessage" [errorMessage]="errorMessage"></app-error-notification>
 </ion-content>
