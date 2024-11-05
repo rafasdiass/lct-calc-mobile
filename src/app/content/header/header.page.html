@@ -1,13 +1,11 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>header</ion-title>
+  <ion-toolbar class="header-toolbar">
+    <ion-title class="header-title">{{ title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateTo('report')" class="header-button">
+        <ion-icon slot="start" name="print-outline"></ion-icon>
+        <span>Relatório</span>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">header</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>

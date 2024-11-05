@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonRouterOutlet, IonFooter } from '@ionic/angular/standalone';
 import { FooterPage } from "../content/footer/footer.page";
+import { HeaderPage } from "../content/header/header.page";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ import { FooterPage } from "../content/footer/footer.page";
     IonContent,
     IonRouterOutlet,
     FooterPage,
-  ],
+    HeaderPage
+],
 })
 export class HomePage {
   selectedTab: string = 'home'; // Define o valor padrão para a tab inicial
