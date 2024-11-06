@@ -87,8 +87,9 @@ export class SelectSubTypePage implements OnChanges {
     }
   }
 
-  onSubTypeSelect(event: CustomEvent): void {
-    const selectedValue = event.detail.value ?? '';
+  onSubTypeSelect(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    const selectedValue = target?.value ?? '';
     console.log(`Subtipo selecionado: ${selectedValue}`);
     this.subTypeSelected.emit(selectedValue);
   }

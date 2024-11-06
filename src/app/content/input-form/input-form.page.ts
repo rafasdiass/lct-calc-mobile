@@ -8,6 +8,7 @@ import { LoadingIndicatorPage } from "../loading-indicator/loading-indicator.pag
 import { SelectCalculationTypePage } from "../select-calculation-type/select-calculation-type.page";
 import { InputFieldsPage } from "./input-fields/input-fields.page";
 import { SelectSubTypePage } from "../select-sub-type/select-sub-type.page";
+import { SubmitButtonPage } from "./submit-button/submit-button.page";
 
 @Component({
   selector: 'app-input-form',
@@ -15,18 +16,34 @@ import { SelectSubTypePage } from "../select-sub-type/select-sub-type.page";
   styleUrls: ['./input-form.page.scss'],
   standalone: true,
   imports: [
-    IonCard, IonFooter, IonButton, IonLabel, IonItem, IonIcon, IonContent,
-    IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
-    FeedbackPage, ErrorNotificationPage, LoadingIndicatorPage, 
-    SelectCalculationTypePage, InputFieldsPage, SelectSubTypePage
-  ],
+    IonCard,
+    IonFooter,
+    IonButton,
+    IonLabel,
+    IonItem,
+    IonIcon,
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    CommonModule,
+    FormsModule,
+    FeedbackPage,
+    ErrorNotificationPage,
+    LoadingIndicatorPage,
+    SelectCalculationTypePage,
+    InputFieldsPage,
+    SelectSubTypePage,
+    SubmitButtonPage
+],
 })
 export class InputFormPage {
   isLoading: boolean = false;
   selectedType: string | null = null;
   selectedSubType: string | null = null;
   calculationData: { [key: string]: string | number } = {};
-  feedback: { message: string; type: 'success' | 'error' | 'info' } | null = null;
+  feedback: { message: string; type: 'success' | 'error' | 'info' } | null =
+    null;
   errorMessage: string = ''; // Propriedade para a mensagem de erro
 
   onTypeSelected(type: string): void {
@@ -53,10 +70,14 @@ export class InputFormPage {
     console.log('Dados atualizados:', this.calculationData);
   }
 
-  onFeedbackReceived(feedback: { message: string; type: 'success' | 'error' | 'info' }): void {
+  onFeedbackReceived(feedback: {
+    message: string;
+    type: 'success' | 'error' | 'info';
+  }): void {
     this.feedback = feedback;
   }
 
+  // Método para definir uma mensagem de erro
   setError(message: string): void {
     this.errorMessage = message;
   }

@@ -1,15 +1,11 @@
-<ion-content>
-  <ion-card>
-    <ion-item>
-      <ion-label position="floating">Selecione o tipo de cálculo:</ion-label>
-      <ion-select interface="popover" [(ngModel)]="selectedType" (ionChange)="onSelectType($event)">
-        <ion-select-option *ngFor="let type of calculationTypes" [value]="type.id">
-          {{ type.displayName }}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-card>
-</ion-content>
-
+<div class="select-calculation-type">
+  <label for="calculationType">Selecione o tipo de cálculo:</label>
+  <select id="calculationType" (change)="onSelectType($event)">
+    <option value="" disabled selected>Escolha um tipo...</option>
+    <option *ngFor="let type of calculationTypes" [value]="type.id">
+      {{ type.displayName }}
+    </option>
+  </select>
+</div>
 <!-- Loading indicator -->
 <ion-spinner name="circles" *ngIf="isLoading"></ion-spinner>

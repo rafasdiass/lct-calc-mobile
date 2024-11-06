@@ -1,149 +1,62 @@
-// Paleta de cores
-$primary-bg: #2c2c2c;
-$primary-text: #e0d5c2;
-$accent-color: #d4a373;
-$hover-bg: #d4a373;
-$hover-text: #2c2c2c;
-$gold: #ffd700;
-$light-shadow: rgba(212, 163, 115, 0.4);
 
-.input-form-content {
-    padding: 1rem;
-    background-color: $primary-bg;
-    color: $primary-text;
-    border-radius: 8px;
-}
 
-// Estilo do Header
-ion-toolbar {
-    --background: $primary-bg;
-    --color: $primary-text;
-    border-bottom: 2px solid $gold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 0.5rem 1rem;
+@import 'src/global.scss';
 
-    ion-title {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: $primary-text;
-        text-shadow: 0 1px 2px $light-shadow;
-    }
-
-    ion-icon {
-        color: $accent-color;
-        font-size: 1.4rem;
-    }
-}
-
-// Estilo dos Itens de Entrada
-.input-item {
-    margin-bottom: 1rem;
-    background-color: lighten($primary-bg, 3%);
-    border-radius: 5px;
-    padding: 0.8rem;
-    transition: background-color 0.3s;
-
-    &:hover {
-        background-color: lighten($primary-bg, 10%);
-    }
-
-    ion-label {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1rem;
-        color: $primary-text;
-    }
-
-    ion-icon {
-        color: $accent-color;
-        font-size: 1.2rem;
-    }
-}
-
-// Estilo dos Cartões de Entrada
-.input-card {
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: darken($primary-bg, 5%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease, box-shadow 0.3s;
-
-    &:hover {
-        background-color: lighten($primary-bg, 5%);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    ion-item {
-        --background: $primary-bg;
-        --color: $primary-text;
-    }
-}
-
-// Estilo do Indicador de Carregamento
-.loading-container {
+.submit-button-container {
     display: flex;
     justify-content: center;
-    margin: 1rem 0;
+    margin-top: 1rem;
 }
 
-// Estilo dos Botões
-ion-button {
-    --background: $accent-color;
-    --color: $primary-bg;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+button {
+    background-color: $accent-color;
+    color: $primary-bg;
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 
     &:hover {
-        background-color: lighten($accent-color, 10%);
-        transform: scale(1.02);
-        box-shadow: 0 4px 8px $light-shadow;
-    }
-
-    ion-icon {
-        margin-right: 0.5rem;
-        font-size: 1.2rem;
-        color: $primary-bg;
+        background-color: $hover-bg;
+        color: $hover-text;
     }
 
     &:disabled {
-        opacity: 0.6;
+        background-color: lighten($accent-color, 20%);
+        color: $primary-bg;
+        cursor: not-allowed;
     }
 }
 
-// Estilo do Botão de Envio no Rodapé
-ion-footer {
-    padding: 0.5rem;
-    background-color: $primary-bg;
-    border-top: 2px solid $gold;
-
-    ion-button {
-        width: 100%;
-        font-size: 1rem;
-        font-weight: bold;
-        background-color: $accent-color;
-
-        &:hover {
-            background-color: lighten($accent-color, 5%);
-            color: $hover-text;
-        }
-    }
-}
-
-// Estilo do Feedback e Notificação de Erro
-app-feedback,
-app-error-notification {
+.loading-indicator {
+    display: flex;
+    justify-content: center;
     margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 8px;
-    color: $primary-text;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: darken($primary-bg, 5%);
-    border-left: 4px solid $gold;
+
+    .spinner-border {
+        color: $gold;
+    }
+}
+
+.feedback-message {
+    margin-top: 1rem;
+    padding: 0.8em;
+    border-radius: 4px;
+    text-align: center;
+    color: $hover-text;
+    background-color: $hover-bg;
+    box-shadow: 0px 4px 8px $light-shadow;
+
+    &.success {
+        border-left: 4px solid lighten($accent-color, 10%);
+    }
+
+    &.error {
+        border-left: 4px solid darken($accent-color, 10%);
+    }
+
+    &.info {
+        border-left: 4px solid $gold;
+    }
 }
