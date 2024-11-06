@@ -1,13 +1,11 @@
 <div class="container mt-5 p-4 border rounded shadow-sm bg-light">
   <h2 class="text-center mb-4">
-    <i class="bi bi-file-earmark-text-fill"></i> Formulário de Entrada
+    <i class="bi bi-file-earmark-text-fill"></i> Form de Entrada
   </h2>
 
   <!-- Seletor de tipo de cálculo -->
   <div class="mb-3">
-    <label for="calculationType" class="form-label">
-      <i class="bi bi-list-ul"></i> Selecione o tipo de cálculo:
-    </label>
+    
     <app-select-calculation-type (typeSelected)="onTypeSelected($event)"></app-select-calculation-type>
   </div>
 
